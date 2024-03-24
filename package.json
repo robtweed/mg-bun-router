@@ -1,0 +1,30 @@
+{
+  "name": "mg-bun-router",
+  "version": "1.0.0",
+  "description": "Express-like Router for Bun.serve",
+  "type": "module",
+  "main": "./src/mg-bun-router.js",
+  "exports": {
+    ".": "./src/mg-bun-router.js"
+  },
+  "engines" : {
+    "node" : ">=18.0.0"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/robtweed/mg-bun-router.git"
+  },
+  "author": "Rob Tweed, MGateway Ltd",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "find-my-way": "latest",
+    "qoper8-cp": "latest"
+  },
+  "bugs": {
+    "url": "https://github.com/robtweed/mg-bun-router/issues"
+  },
+  "homepage": "https://github.com/robtweed/mg-bun-router#readme"
+}

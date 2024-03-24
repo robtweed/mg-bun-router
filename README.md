@@ -627,7 +627,7 @@ You can therefore use its *on()* method, for example, to see when/if workers are
 
 ## License
 
- Copyright (c) 2023-24 MGateway Ltd,                           
+ Copyright (c) 2024 MGateway Ltd,                           
  Redhill, Surrey UK.                                                      
  All rights reserved.                                                     
                                                                            

@@ -23,7 +23,7 @@
  |  limitations under the License.                                           |
  ----------------------------------------------------------------------------
 
-23 March 2024
+24 March 2024
 
 */
 
@@ -184,13 +184,20 @@ class Router {
       }
       return res;
     });
+    this.invalid(errControl, ['get']);
   }
 
-  invalid(errControl) {
+  invalid(errControl, exclude) {
     errControl = errControl || {};
-    this.get('/*', async function(req) {
-      return this.unrecognised(errControl);
-    });
+    exclude = exclude || [];
+    const methods = ['get', 'post', 'put', 'delete', 'head', 'options', 'patch'];
+    for (let method of methods) {
+      if (!exclude.includes(method)) {
+        this[method]('/*', async function(req) {
+          return this.unrecognised(errControl);
+        });
+      }
+    }
   }
 
   unrecognised(obj) {

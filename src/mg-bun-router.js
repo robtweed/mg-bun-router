@@ -32,6 +32,17 @@ import fs from 'fs';
 import crypto from 'crypto';
 import {QOper8} from 'qoper8-cp';
 
+function parseCookies(cookieStr) {
+  let cookies = {};
+  if (!cookieStr || cookieStr === '') return cookies;
+  let pcs = cookieStr.split(';');
+  for (let cookie of pcs) {
+   let nvp = cookie.split('=');
+   cookies[nvp[0].trim()] = nvp[1];
+  }
+  return cookies;
+}
+
 class Router {
   constructor(options) {
     this.context = {};
@@ -80,6 +91,7 @@ class Router {
         params: params,
         pathname: url.pathname,
         query: Object.fromEntries(url.searchParams.entries()),
+        cookies: parseCookies(Request.headers.get('Cookie')),
         routerPath: routerPath,
         Request: Request
       };

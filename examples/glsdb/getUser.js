@@ -4,7 +4,7 @@ const handler = function(messageObj, finished) {
 
   /*
 
-    // using the low-level native mg-dbx-napi APIs
+    // alternative example, using the low-level native mg-dbx-napi APIs
 
   let person = this.use("Person");
   let exists = +person.defined('data', id);

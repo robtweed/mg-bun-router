@@ -154,6 +154,7 @@ You can define as many routes as you wish:
   - params: object containing the names and actual values of any specified parametric path elements.  For wildcards, the value is the actual URL sub-path for the part represented by the wildcard
   - pathname: path derived from the url
   - query: object representing any URL querystring parameters as name/value pairs
+  - cookies: object representing any incoming Cookies as name/value pairs
   - routerPath: the route (including any parameters or wildcards) as specified in the route that has been applied
   - Request: the original raw Request object
 
@@ -286,7 +287,11 @@ to route all incoming instances of *GET /helloworld* to a Child Process, where t
 
 *QOper8* Worker Message Handler Modules must export a function with two arguments:
 
-- *messageObj*: the incoming Request object, as repackaged for you by *mg-bun-router* (see earlier)
+- *messageObj*: the incoming message object sent from the master Bun.serve process.  It has two properties:
+
+  - type: the message type.  This is automatically set to the router path
+
+  - data: the incoming request object, as repackaged for you by *mg-bun-router* (see earlier).  Note it does not include the raw HTTP Request object as this cannot be cloned for transmission to a QOper8 Child Process.
 
 - *finished*: the method provided by *QOper8* that you must use for returning your response object and releasing the Worker back to the available pool
 
